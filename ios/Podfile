@@ -83,7 +83,43 @@ target 'PocketBalance' do
       ],
     }
 
+    expo_image_patches = {
+      File.expand_path('../node_modules/expo-image/ios/ImageView.swift', __dir__) => [
+        [
+          '  var pendingOperation: SDWebImageCombinedOperation?',
+          '  nonisolated(unsafe) var pendingOperation: SDWebImageCombinedOperation?',
+        ],
+        [
+          "  @available(iOS 26.0, tvOS 26.0, *)\n  private func applySymbolEffectiOS26(effect: SFSymbolEffectType, scope: SFSymbolEffectScope?, options: SymbolEffectOptions) {\n    switch effect {\n    case .drawOn:\n      switch scope {\n      case .byLayer: sdImageView.addSymbolEffect(.drawOn.byLayer, options: options)\n      case .wholeSymbol: sdImageView.addSymbolEffect(.drawOn.wholeSymbol, options: options)\n      case .none: sdImageView.addSymbolEffect(.drawOn, options: options)\n      }\n    case .drawOff:\n      switch scope {\n      case .byLayer: sdImageView.addSymbolEffect(.drawOff.byLayer, options: options)\n      case .wholeSymbol: sdImageView.addSymbolEffect(.drawOff.wholeSymbol, options: options)\n      case .none: sdImageView.addSymbolEffect(.drawOff, options: options)\n      }\n    default:\n      break\n    }\n  }",
+          "  @available(iOS 26.0, tvOS 26.0, *)\n  private func applySymbolEffectiOS26(effect: SFSymbolEffectType, scope: SFSymbolEffectScope?, options: SymbolEffectOptions) {\n    let _ = effect\n    let _ = scope\n    let _ = options\n  }",
+        ],
+        [
+          '  func cancelPendingOperation() {',
+          '  nonisolated func cancelPendingOperation() {',
+        ],
+        [
+          "  private func analyzeImage() {\n    guard #available(iOS 16.0, macCatalyst 17.0, *), ImageAnalyzer.isSupported, let image = sdImageView.image else {\n      return\n    }\n\n    Task {\n      guard let imageAnalyzer = Self.imageAnalyzer, let imageAnalysisInteraction = findImageAnalysisInteraction() else {\n        return\n      }\n      let configuration = ImageAnalyzer.Configuration([.text, .machineReadableCode])\n\n      do {\n        let imageAnalysis = try await imageAnalyzer.analyze(image, configuration: configuration)\n\n        // Make sure the image haven't changed in the meantime.\n        if image == sdImageView.image {\n          imageAnalysisInteraction.analysis = imageAnalysis\n          imageAnalysisInteraction.preferredInteractionTypes = .automatic\n        }\n      } catch {\n        log.error(error)\n      }\n    }\n  }",
+          "  private func analyzeImage() {\n    return\n  }",
+        ],
+        [
+          '    Task { @MainActor in @MainActor in',
+          '    Task { @MainActor in',
+        ],
+      ],
+    }
+
     expo_modules_core_patches.each do |file_path, replacements|
+      next unless File.exist?(file_path)
+
+      content = File.read(file_path)
+      updated_content = replacements.reduce(content) do |memo, (before, after)|
+        memo.include?(before) ? memo.gsub(before, after) : memo
+      end
+
+      File.write(file_path, updated_content) if updated_content != content
+    end
+
+    expo_image_patches.each do |file_path, replacements|
       next unless File.exist?(file_path)
 
       content = File.read(file_path)
