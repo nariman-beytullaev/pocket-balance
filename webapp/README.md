@@ -6,6 +6,8 @@ The CSR browser client provides the baseline auth flow for future app features. 
 
 This section may be updated during first-run bootstrap. If the root `README.md` marks webapp as deferred, add a short note here explaining that browser work is intentionally paused. When the user activates webapp, remove or rewrite that note before starting browser development.
 
+Webapp is intentionally deferred for Pocket Balance. Do not add browser-only product work unless it directly supports the active mobile app or a later product decision reactivates this surface.
+
 ## Stack
 
 - React

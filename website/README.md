@@ -2,6 +2,10 @@
 
 The website workspace is a separate Astro project for public, SEO-facing surfaces: landing pages, marketing/content sites, and the public catalog of product sites such as a marketplace. It is the SSG-first counterpart to the CSR `webapp` (which lives behind auth and needs no SEO). Keep it independent from authenticated browser-app workflows unless a product need explicitly requires shared API data.
 
+## Project Surface Status
+
+Website is intentionally deferred for Pocket Balance. No public marketing or SEO surface is needed for the current local-first mobile MVP.
+
 ## Stack
 
 - Astro (static SSG by default; SSR-ready per route)

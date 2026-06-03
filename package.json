@@ -1,5 +1,5 @@
 {
-  "name": "vibecoding-template",
+  "name": "pocket-balance",
   "private": true,
   "version": "0.0.0",
   "license": "MIT",
@@ -39,5 +39,6 @@
     "smoke:backend:docker": "bun run --cwd backend smoke:docker",
     "e2e:webapp": "bun run --cwd webapp e2e",
     "e2e:mobile": "bun run --cwd mobile e2e:maestro"
-  }
+  },
+  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
 }

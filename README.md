@@ -6,6 +6,16 @@
 
 A full-stack starter for web and mobile products: one repository with a Bun/Hono backend, a React CSR browser client (`webapp`), an Astro SSG/SSR site (`website`), an Expo mobile app, and shared API contracts. The goal is to give agents and developers clear architectural boundaries so new features keep following the same shape.
 
+## Project Bootstrap Status
+
+- Project name: `Pocket Balance`
+- Primary product: a small iPhone expense tracker with local-first storage
+- Active surfaces now: `mobile`
+- Deferred surfaces now: `backend/API`, `webapp`, `website`
+- First release scope: record transactions, manage categories and subcategories, update balance, and show the current balance
+- Out of scope for the first release: auth, cloud sync, uploads/media, external integrations, real-time features, deployment, Expo Push, EAS setup, and Maestro E2E
+- Current setup direction: keep data on-device first, then add sync later only if the product proves it needs it
+
 ## Agent Intake Checklist Before Installing
 
 Before cloning or installing this template for an end user, the agent should ask a short product-focused intake in the user's language and record the answers during setup:
