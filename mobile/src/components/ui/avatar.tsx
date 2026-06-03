@@ -1,6 +1,5 @@
-import { Image, type ImageProps } from 'expo-image';
 import type { ReactNode } from 'react';
-import { StyleSheet, View, type ViewProps } from 'react-native';
+import { Image, StyleSheet, View, type ImageProps, type ViewProps } from 'react-native';
 
 import { Surface, Typography } from './primitives';
 import { useUiTheme } from './theme';

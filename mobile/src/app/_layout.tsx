@@ -2,9 +2,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Stack } from 'expo-router';
 import { useState } from 'react';
 
-import { AuthProvider } from '@/lib/auth';
-import { IapProvider } from '@/lib/iap';
-import { PushNotificationsProvider } from '@/lib/push-notifications';
+import { BudgetProvider } from '@/lib/budget';
 
 export default function RootLayout() {
   const [queryClient] = useState(
@@ -21,13 +19,9 @@ export default function RootLayout() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <AuthProvider>
-        <IapProvider>
-          <PushNotificationsProvider>
-            <Stack screenOptions={{ headerShown: false }} />
-          </PushNotificationsProvider>
-        </IapProvider>
-      </AuthProvider>
+      <BudgetProvider>
+        <Stack screenOptions={{ headerShown: false }} />
+      </BudgetProvider>
     </QueryClientProvider>
   );
 }

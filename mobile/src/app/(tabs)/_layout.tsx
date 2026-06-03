@@ -1,18 +1,16 @@
-import { Redirect } from 'expo-router';
-
 import AppTabs from '@/components/app-tabs';
 import { ScreenLoader } from '@/components/screen-states';
-import { useAuth } from '@/lib/auth';
+import { useBudget } from '@/lib/budget';
+
+export const unstable_settings = {
+  initialRouteName: 'index',
+};
 
 export default function TabsLayout() {
-  const auth = useAuth();
+  const budget = useBudget();
 
-  if (auth.isBootstrapping) {
+  if (budget.isBootstrapping) {
     return <ScreenLoader />;
-  }
-
-  if (!auth.user) {
-    return <Redirect href="/" />;
   }
 
   return <AppTabs />;

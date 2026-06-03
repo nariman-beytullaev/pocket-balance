@@ -33,18 +33,18 @@ export default function AppTabs() {
         ],
       }}>
       <RouterTabs.Screen
-        name="components"
+        name="index"
         options={{
-          title: 'Components',
+          title: 'Balance',
           tabBarLabel: ({ color }) => (
             <Typography colorValue={color} variant="caption" weight="700">
-              Components
+              Balance
             </Typography>
           ),
-          tabBarButtonTestID: TEST_IDS.tabs.componentsTab,
+          tabBarButtonTestID: TEST_IDS.tabs.overviewTab,
           tabBarIcon: ({ color, size }) => (
             <SymbolView
-              name={{ ios: 'square.grid.2x2.fill', android: 'view_module', web: 'view_module' }}
+              name={{ ios: 'wallet.pass.fill', android: 'account_balance_wallet', web: 'account_balance_wallet' }}
               size={size}
               tintColor={color}
             />
@@ -52,18 +52,37 @@ export default function AppTabs() {
         }}
       />
       <RouterTabs.Screen
-        name="profile"
+        name="transactions"
         options={{
-          title: 'Profile',
+          title: 'Transactions',
           tabBarLabel: ({ color }) => (
             <Typography colorValue={color} variant="caption" weight="700">
-              Profile
+              Transactions
             </Typography>
           ),
-          tabBarButtonTestID: TEST_IDS.tabs.profileTab,
+          tabBarButtonTestID: TEST_IDS.tabs.transactionsTab,
           tabBarIcon: ({ color, size }) => (
             <SymbolView
-              name={{ ios: 'person.crop.circle.fill', android: 'person', web: 'person' }}
+              name={{ ios: 'arrow.left.arrow.right.circle.fill', android: 'swap_horiz', web: 'swap_horiz' }}
+              size={size}
+              tintColor={color}
+            />
+          ),
+        }}
+      />
+      <RouterTabs.Screen
+        name="categories"
+        options={{
+          title: 'Categories',
+          tabBarLabel: ({ color }) => (
+            <Typography colorValue={color} variant="caption" weight="700">
+              Categories
+            </Typography>
+          ),
+          tabBarButtonTestID: TEST_IDS.tabs.categoriesTab,
+          tabBarIcon: ({ color, size }) => (
+            <SymbolView
+              name={{ ios: 'square.grid.3x3.topleft.filled', android: 'category', web: 'category' }}
               size={size}
               tintColor={color}
             />

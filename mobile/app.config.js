@@ -13,10 +13,7 @@ const plugins = [
     },
   ],
   'expo-secure-store',
-  'expo-notifications',
-  'expo-iap',
   'expo-web-browser',
-  'expo-apple-authentication',
 ];
 
 if (googleIosUrlScheme) {
@@ -30,20 +27,19 @@ if (googleIosUrlScheme) {
 
 module.exports = {
   expo: {
-    name: 'mobile',
-    slug: 'mobile',
+    name: 'Pocket Balance',
+    slug: 'pocket-balance',
     version: '1.0.0',
     orientation: 'portrait',
     icon: './assets/images/icon.png',
-    scheme: 'mobile',
+    scheme: 'pocket-balance',
     userInterfaceStyle: 'automatic',
     ios: {
-      bundleIdentifier: 'com.webappdemo.mobile',
-      icon: './assets/expo.icon',
-      usesAppleSignIn: true,
+      bundleIdentifier: 'com.pocketbalance.app',
+      icon: './assets/images/icon.png',
     },
     android: {
-      package: 'com.webappdemo.mobile',
+      package: 'com.pocketbalance.app',
       adaptiveIcon: {
         backgroundColor: '#E6F4FE',
         foregroundImage: './assets/images/android-icon-foreground.png',

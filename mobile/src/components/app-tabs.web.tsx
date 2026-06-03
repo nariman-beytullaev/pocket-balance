@@ -34,18 +34,25 @@ export default function AppTabs() {
       <TabSlot style={slotStyle} />
       <TabList asChild>
         <BottomTabList style={tabBarStyle}>
-          <TabTrigger name="components" href="/components" asChild>
+          <TabTrigger name="index" href="/(tabs)" asChild>
             <TabButton
-              icon={{ ios: 'square.grid.2x2.fill', android: 'view_module', web: 'view_module' }}
-              testID={TEST_IDS.tabs.componentsTab}>
-              Components
+              icon={{ ios: 'wallet.pass.fill', android: 'account_balance_wallet', web: 'account_balance_wallet' }}
+              testID={TEST_IDS.tabs.overviewTab}>
+              Balance
             </TabButton>
           </TabTrigger>
-          <TabTrigger name="profile" href="/profile" asChild>
+          <TabTrigger name="transactions" href="/transactions" asChild>
             <TabButton
-              icon={{ ios: 'person.crop.circle.fill', android: 'person', web: 'person' }}
-              testID={TEST_IDS.tabs.profileTab}>
-              Profile
+              icon={{ ios: 'arrow.left.arrow.right.circle.fill', android: 'swap_horiz', web: 'swap_horiz' }}
+              testID={TEST_IDS.tabs.transactionsTab}>
+              Transactions
+            </TabButton>
+          </TabTrigger>
+          <TabTrigger name="categories" href="/categories" asChild>
+            <TabButton
+              icon={{ ios: 'square.grid.3x3.topleft.filled', android: 'category', web: 'category' }}
+              testID={TEST_IDS.tabs.categoriesTab}>
+              Categories
             </TabButton>
           </TabTrigger>
         </BottomTabList>
